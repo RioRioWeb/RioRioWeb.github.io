@@ -37,7 +37,7 @@
   const imageChange = document.querySelector('.imageChange');
 
   imageChange.addEventListener('click', () => {
-    document.getElementById('backImage1').src="../CR7/image/real_img.png"
+    document.getElementById('backImage1').src="image/real_img.png"
   });
 
 
