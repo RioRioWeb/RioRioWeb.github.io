@@ -1,0 +1,265 @@
+body {
+  margin: 0;
+  /* 余白を消す */
+  height: 100vh;
+  font-family: 'HanziPen SC',sans-serif;
+}
+
+header {
+  background-color: rgb(194, 22, 22);
+  color: white;
+  display: flex;
+}
+
+.goat {
+  font-size: 40px;
+  font-family: 'Anton', sans-serif;
+  padding-left: 10px;
+}
+
+#real {
+  height: 40px;
+  margin: auto 10px;
+  cursor: pointer;
+}
+
+.menu {
+  margin: auto 0;
+  margin-left: auto;
+}
+
+/* header #open {
+  font-size: 30px;
+  line-height: 60px;
+} */
+
+header #open {
+  margin-right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+header #open.show {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.intro {
+  position: relative;
+  /* border: 1px solid rgb(0, 0, 0); */
+  margin: 10px 10px;
+  overflow: hidden;
+}
+
+.context {
+  color: white;
+  font-family: 'HanziPen SC',sans-serif;
+  font-weight: bold;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 50%;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.context h1 {
+  font-size: 20px;
+  margin-top: 20;
+  margin-bottom: 20px;
+  margin: 0 auto;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.context p {
+  width: 90%;
+  font-size: 12px;
+  line-height: 20px;
+  /* border: 1px solid rgb(0, 0, 0); */
+}
+
+#backImg {
+  width: 100%;
+  /* 画像幅をウィンドウに合わせる */
+  /* border: 1px solid rgb(0, 0, 0); */
+  border-radius: 10px;
+}
+
+.navMenu {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 65%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(27, 23, 23, 0.9);
+  transition: opacity .5s;
+}
+
+.navMenu.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navMenu ul {
+  width: 80%;
+  margin: 0;
+  padding: 14px;
+  padding-top: 28px;
+  padding-left: 28px;
+}
+
+.navMenu li {
+  list-style-type: none;
+  text-indent: 1em;
+}
+
+#close {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 14px;
+  width: 20%;
+  cursor: pointer;
+}
+
+.title {
+  width: 90%;
+  padding: 5px;
+  padding-left: 30px;
+  margin: 0;
+  position: relative;
+}
+
+.title::before, .title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /* インライン要素の横幅はデフォルトでは内容、つまりこの場合はcontentの値で決まる。そのため、widthを指定しないとボックスの幅が0で線が表示されない */
+  height: 1px;
+  background: linear-gradient(to right, transparent, #000 25%, #000 75%, rgba(0, 0, 0, 0));
+  /* グラデーションの設定 */
+  /* linear-gradient(方向, 色, 色, 色) */
+  /* transparent = rgba(0, 0, 0, 0) 透明 */
+}
+
+.title::before {
+  top: 0;
+}
+
+.title::after {
+  bottom: 0;
+}
+
+.titleSelect {
+  display: flex;
+  margin-left: 30px;
+  padding: 0;
+  margin-bottom: 10px
+}
+
+.titleSelect li {
+  border: 1px solid black;
+  padding: 8px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.titleSelect li + li {
+  margin-left: 1px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.titleSelect .active {
+  background: rgb(194, 22, 22);
+  color: white;
+}
+
+.teamTitle, .perTitle {
+  padding: 10px 20px;
+  margin: 0 20px;
+  border-bottom: 1px solid rgb(34, 31, 31);
+  border-top: 1px solid rgb(34, 31, 31);
+  animation: .3s change;
+}
+
+.teamTitle.active, .perTitle.active {
+  background: rgb(194, 22, 22);
+  color: white;
+}
+
+.teamTitle.hidden, .perTitle.hidden {
+  display: none;
+}
+
+.sporting.hidden, .united.hidden, .real.hidden, .juve.hidden {
+  display: none;
+}
+
+.era {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.era::after {
+  content: '+';
+  font-family: serif;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.era.active::after {
+  content: '−';
+  font-family: serif;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.era + div {
+  animation: .3s fadeIn;
+}
+
+.teamTitle, .perTitle {
+  animation: .3s change;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes change {
+  0% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+  
+@media screen and (min-width: 600px) {
+  #backImg {
+    width: 600px;
+    border-radius: 10px;
+  }  
+}
+
+.container {
+  margin: 10px 10px;
+}
